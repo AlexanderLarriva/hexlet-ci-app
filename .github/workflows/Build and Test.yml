@@ -15,3 +15,10 @@ jobs:
         run: make test
       - name: Lint # имя шага
         run: make lint
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          node-version: 16
+          cache: 'npm'
