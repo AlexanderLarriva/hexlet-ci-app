@@ -8,17 +8,17 @@ jobs:
     runs-on: ubuntu-latest # запуск на системе
     steps:
       - name: Checkout # имя шага
-        uses: actions/checkout@v2 # клонирование репозитория в ВО
+        uses: actions/checkout@v2 # экшн клонирование репозитория в ВО
       - name: Setup # имя шага
-        run: make setup
+        run: make setup # run
       - name: Test # имя шага
         run: make test
       - name: Lint # имя шага
         run: make lint
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
+        uses: snyk/actions/node@master # экшн проверка на уязвимости snyk
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          node-version: 16
-          cache: 'npm'
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }} # переменная окружения. Подключение токена Snyk из секрета GitHub
+        with: # параметра
+          node-version: 16 # версия
+          cache: 'npm' # кеширование для npm
