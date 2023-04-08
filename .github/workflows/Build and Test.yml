@@ -1,0 +1,17 @@
+name: Build and Test
+
+on:
+  push:
+
+jobs:
+  setup: # имя
+    runs-on: ubuntu-latest # запуск на системе
+    steps:
+      - name: Checkout # имя шага
+        uses: actions/checkout@v2 # клонирование репозитория в ВО
+      - name: Setup # имя шага
+        run: make setup
+      - name: Test # имя шага
+        run: make test
+      - name: Lint # имя шага
+        run: make lint
